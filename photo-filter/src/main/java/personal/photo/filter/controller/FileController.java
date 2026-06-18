@@ -19,7 +19,13 @@ public class FileController {
                 Files.createDirectories(dir);
             }
 
-            Path path = dir.resolve(file.getOriginalFilename());
+            String filename = Paths
+                    .get(file.getOriginalFilename())
+                    .getFileName()
+                    .toString();
+
+            Path path = dir.resolve(filename);
+
 
             Files.copy(
                     file.getInputStream(),
